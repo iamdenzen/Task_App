@@ -22,6 +22,8 @@ class UserResource extends JsonResource
             'phone' => $this->phone,
             'avatar' => $this->profile_photo_path,
             'token' => $this->token,
+            'device_token' => $this->device_token,
+            'device_type' => $this->device_type,
         ];
     }
 }

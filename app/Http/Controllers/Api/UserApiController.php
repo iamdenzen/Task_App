@@ -17,7 +17,13 @@ class UserApiController extends Controller
 {
     public function show($id)
     {
-        return new UserResource(User::find($id));
+        $response = [
+          'status' => true,
+          'message' =>  'User registered successully',
+          'data' => new UserResource(User::find($id))
+        ];
+
+        return response($response, 201);
     }
 
     public function store(Request $request)
