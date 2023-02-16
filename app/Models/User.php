@@ -28,6 +28,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'phone',
+        'device_type',
+        'device_token',
         'password',
         'liked_tasks',
         'disliked_tasks',
@@ -37,12 +39,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function comments(){
-        return $this->hasMany(Comment::class, 'author_id', 'id');
-    }
-
-    public function tasks(){
-        return $this->hasMany(Task::class, 'author_id', 'id');
+    public function progress(){
+        return $this->hasMany(Progress::class, 'user_id', 'id');
     }
 
     /**

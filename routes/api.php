@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryApiController;
-use App\Http\Controllers\Api\CommentApiController;
+use App\Http\Controllers\Api\Progress_listApiController;
 use App\Http\Controllers\Api\TaskApiController;
 use App\Http\Controllers\Api\TagApiController;
 use App\Http\Controllers\Api\UserApiController;
@@ -27,19 +27,19 @@ Route::get('show/{id}', [UserApiController::class, 'show']);
 
 Route::get('user/{id}', [UserApiController::class, 'show']);
 Route::get('user/{id}/tasks', [UserApiController::class, 'tasks']);
-Route::get('user/{id}/comments', [UserApiController::class, 'comments']);
+Route::get('user/{id}/progress_lists', [UserApiController::class, 'progress_lists']);
 
 Route::get('categories', [CategoryApiController::class, 'index']);
 Route::get('categories/{id}/tasks', [CategoryApiController::class, 'tasks']);
 
 Route::get('tasks', [TaskApiController::class, 'index']);
 Route::get('tasks/{id}', [TaskApiController::class, 'show']);
-Route::get('tasks/{id}/comments', [TaskApiController::class, 'comments']);
+Route::get('tasks/{id}/progress_lists', [TaskApiController::class, 'progress_lists']);
 
 Route::get('tags/{id}/tasks', [TagApiController::class, 'tasks']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('comments/tasks', [CommentApiController::class, 'store']);
+    Route::post('progress_lists/tasks', [Progress_listApiController::class, 'store']);
     Route::post('logout', [UserApiController::class, 'logout']);
     Route::post('update-password',[UserApiController::class, 'updatePassword']);
 });

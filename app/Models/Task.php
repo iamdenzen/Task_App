@@ -27,8 +27,8 @@ class Task extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function comments(){
-        return $this->hasMany(Comment::class)->with(['author']);
+    public function progress_lists(){
+        return $this->hasMany(Progress_list::class)->with(['author']);
     }
 
     public function images(){

@@ -9,7 +9,7 @@
             <div class="grid gap-4">
                 <div class="font-bold text-xl mb-2">{{ $task->title }}</div>
                 <div class="flex">
-                    by&nbsp;<span class="italic">{{ $task->author->first_name . ' ' . $task->author->last_name }}</span>
+                    by&nbsp;<span class="italic">{{ $task->user->first_name . ' ' . $task->user->last_name }}</span>
                     &nbsp;in&nbsp;<a href="{{ url('dashboard/categories/' . $task->category->id . '/tasks') }}"
                         class="underline">{{ $task->category->title }}</a>
                     &nbsp;on&nbsp;{{ $task->updated_at->format('F, d Y') }}
@@ -43,20 +43,20 @@
                         @endforeach
                     @endif
                 </div>
-                @if ($task->comments->count())
+                @if ($task->progress_lists->count())
                     <div class="text-base">
-                        <p class="text-gray-900 pt-2 pb-4">{{ $task->comments->count() }}
-                        @if ($task->comments->count() > 1) Responses @else Response
+                        <p class="text-gray-900 pt-2 pb-4">{{ $task->progress_lists->count() }}
+                        @if ($task->progress_lists->count() > 1) Responses @else Response
                             @endif
                         </p>
                         <div class="bg-gray-100 overflow-hidden shadow-xl px-6 pt-4">
-                            @foreach ($task->comments as $comment)
+                            @foreach ($task->progress_lists as $progress_list)
                                 <div>
                                     <p class="text-gray-500 font-bold">
-                                        {{ $comment->author->first_name . ' ' . $comment->author->last_name }}</p>
-                                    <p class="text-gray-400 text-xs">{{ $comment->created_at->format('F, d Y g:i a') }}
+                                        {{ $progress_list->user->first_name . ' ' . $progress_list->user->last_name }}</p>
+                                    <p class="text-gray-400 text-xs">{{ $progress_list->created_at->format('F, d Y g:i a') }}
                                     </p>
-                                    <p class="text-gray-500 pb-4">{{ $comment->comment }}</p>
+                                    <p class="text-gray-500 pb-4">{{ $progress_list->progress_list }}</p>
                                 </div>
                             @endforeach
                         </div>

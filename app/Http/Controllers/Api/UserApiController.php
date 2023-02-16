@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\TaskResource;
-use App\Http\Resources\CommentResource;
+use App\Http\Resources\Progress_listResource;
 use Exception;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +47,11 @@ class UserApiController extends Controller
         $token = $user->createToken('app-token')->plainTextToken;
 
         $user->token = $token;
-        $response = ['data' => new UserResource($user)];
+        $response = [
+          'status' => true,
+          'message' =>  'User registered successully',
+          'data' => new UserResource($user)
+        ];
 
         return response($response, 201);
     }
@@ -74,7 +78,11 @@ class UserApiController extends Controller
         $token = $user->createToken('app-token')->plainTextToken;
 
         $user->token = $token;
-        $response = ['data' => new UserResource($user)];
+        $response = [
+          'status' => true,
+          'message' =>  'User logged in successully',
+          'data' => new UserResource($user)
+        ];
 
         return response($response, 201);
     }
@@ -82,7 +90,11 @@ class UserApiController extends Controller
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        $response = ['data' => 'Logout successful.'];
+        $response = [
+          'status' => true,
+          'message' =>  'User logged out successully',
+          /*'data' => 'Logout successful.'*/
+        ];
         return response()->json($response, 201);
     }
 
@@ -142,14 +154,14 @@ class UserApiController extends Controller
     public function tasks($id)
     {
         $author = User::find($id);
-        $tasks = $author->tasks()->with('category', 'author', 'tags', 'images', 'videos', 'comments')->paginate();
+        $tasks = $author->tasks()->with('category', 'author', 'tags', 'images', 'videos', 'progress_lists')->paginate();
         return TaskResource::collection($tasks);
     }
 
-    public function comments($id)
+    public function progress_lists($id)
     {
         $user = User::find($id);
-        $comments = $user->comments()->with('task')->paginate();
-        return CommentResource::collection($comments);
+        $progress_lists = $user->progress_lists()->with('task')->paginate();
+        return Progress_listResource::collection($progress_lists);
     }
 }

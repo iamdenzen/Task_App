@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '5a846874ad05d54c0fe2a89803f26831f0f5e431',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -458,12 +458,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '5a846874ad05d54c0fe2a89803f26831f0f5e431',
             'dev_requirement' => false,
         ),
         'laravel/sanctum' => array(
@@ -485,12 +485,12 @@
             'dev_requirement' => false,
         ),
         'laravel/telescope' => array(
-            'pretty_version' => 'v4.13.1',
-            'version' => '4.13.1.0',
+            'pretty_version' => 'v4.13.2',
+            'version' => '4.13.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/telescope',
             'aliases' => array(),
-            'reference' => 'f8afaccfb5b636aa20735e0a390ab312a6f57c65',
+            'reference' => '34a259cf19a73cc3b9b31f49c3c85595afcfbb70',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -503,12 +503,12 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
-            'pretty_version' => '2.3.8',
-            'version' => '2.3.8.0',
+            'pretty_version' => '2.3.9',
+            'version' => '2.3.9.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
-            'reference' => 'c493585c130544c4e91d2e0e131e6d35cb0cbc47',
+            'reference' => 'c1e114f74e518daca2729ea8c4bf1167038fa4b5',
             'dev_requirement' => false,
         ),
         'league/config' => array(

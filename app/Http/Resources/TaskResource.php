@@ -25,7 +25,7 @@ class TaskResource extends JsonResource
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'videos' => VideoResource::collection($this->whenLoaded('videos')),
             'tags' => TagResource::collection($this->whenLoaded('tags')),
-            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'progress_lists' => Progress_listResource::collection($this->whenLoaded('progress_lists')),
             'author' => new UserResource($this->whenLoaded('author')),
             'category' => new CategoryResource($this->whenLoaded('category')),
         ];

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateProgress_listsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('progress_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
-            $table->json('meta_data')->nullable();
-            $table->bigInteger('author_id');
+            $table->string('remarks')->nullable();
+            $table->bigInteger('user_id');
             $table->bigInteger('task_id');
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('progress_lists');
     }
 }

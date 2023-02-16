@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->string('device_type')->nullable();
+            $table->string('device_token')->nullable();
             //$table->json('liked_posts')->nullable();
             //$table->json('disliked_posts')->nullable();
             //$table->json('favourite_posts')->nullable();

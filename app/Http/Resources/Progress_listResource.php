@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CommentResource extends JsonResource
+class Progress_listResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,8 @@ class CommentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'comment_id' => $this->id,
-            'comment' => $this->comment,
+            'progress_list_id' => $this->id,
+            'progress_list' => $this->progress_list,
             'author' => new UserResource($this->whenLoaded('author')),
             'task' => new TaskResource($this->whenLoaded('task')),
         ];
