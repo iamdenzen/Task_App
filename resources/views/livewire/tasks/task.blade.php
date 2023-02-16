@@ -31,18 +31,7 @@
                 <div class="text-gray-700 text-base">
                     {!! $task->content !!}
                 </div>
-                <div class="flex">
-                    @php
-                    $tags=$task->tags->pluck('id', 'title');
-                    @endphp
-                    @if (count($tags) > 0)
-                        Tags:
-                        @foreach ($tags as $key => $tag)
-                            <a href="{{ url('dashboard/tags/' . $tag . '/tasks') }}"
-                                class="underline px-1">{{ $key }}</a>
-                        @endforeach
-                    @endif
-                </div>
+                
                 @if ($task->progress_lists->count())
                     <div class="text-base">
                         <p class="text-gray-900 pt-2 pb-4">{{ $task->progress_lists->count() }}

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Tasks;
 
-use App\Models\Task as PostModel;
+use App\Models\Task as TaskModel;
 use Livewire\Component;
 
 class Task extends Component
@@ -12,7 +12,7 @@ class Task extends Component
 
     public function mount($id)
     {
-        $this->task = TaskModel::with(['author', 'comments', 'category', 'images', 'videos', 'tags'])->find($id);
+        $this->task = TaskModel::with(['user', 'progress_lists', 'category', 'images', 'videos'])->find($id);
     }
 
     public function render()

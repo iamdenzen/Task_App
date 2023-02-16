@@ -5,8 +5,6 @@ use App\Http\Livewire\Categories\Categorytasks;
 use App\Http\Livewire\Tasks\Tasks;
 use App\Http\Livewire\Users\Users;
 use App\Http\Livewire\Tasks\Task as t;
-use App\Http\Livewire\Tags\Tagtasks;
-use App\Http\Livewire\Tags\Tags;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,28 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('test', function () {
-//     $category = App\Models\Category::find(3);
-//     // return $category->tasks;
-
-//     $comment = App\Models\Comment::find(152);
-//     // return $comment->author;
-//     // return $comment->task;
-
-//     $task = App\Models\Task::find(152);
-//     // return $task->category;
-//     // return $task->author;
-//     // return $task->images;
-//     // return $task->comments;
-//     // return $task->tags;
-
-//     $tag = App\Models\Tag::find(5);
-//     // return $tag->tasks;
-
-//     $author = App\Models\User::find(88);
-//     // return $author->tasks;
-//     return $author->comments;
-// });
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,6 +35,3 @@ Route::get('dashboard/categories/{id}/tasks', Categorytasks::class);
 
 Route::get('dashboard/tasks', Tasks::class)->name('tasks');
 Route::get('dashboard/tasks/{id}', t::class);
-
-Route::get('dashboard/tags', Tags::class)->name('tags');
-Route::get('dashboard/tags/{id}/tasks', Tagtasks::class);

@@ -15,9 +15,9 @@ class Progress_listResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'progress_list_id' => $this->id,
-            'progress_list' => $this->progress_list,
-            'author' => new UserResource($this->whenLoaded('author')),
+            'id' => $this->id,
+            'remarks' => $this->remarks,
+            'user' => new UserResource($this->whenLoaded('user')),
             'task' => new TaskResource($this->whenLoaded('task')),
         ];
     }

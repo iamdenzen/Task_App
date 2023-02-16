@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->json('meta_data')->nullable();
-            $table->bigInteger('author_id');
+            $table->bigInteger('user_id');
             $table->bigInteger('category_id');
             $table->timestamps();
         });

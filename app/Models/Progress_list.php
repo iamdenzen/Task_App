@@ -10,8 +10,7 @@ class Progress_list extends Model
     use HasFactory;
 
     protected $fillable = [
-        'progress_list',
-        'meta_data',
+        'remarks',
         'user_id',
         'task_id',
     ];

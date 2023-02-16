@@ -24,7 +24,7 @@ class CategoryResource extends JsonResource
     public function with($request){
         return [
             'version' => "1.0.0",
-            'author_url' => "https://mditech.net"
+            'user_url' => "https://mditech.net"
         ];
     }
 }

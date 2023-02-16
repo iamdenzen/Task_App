@@ -60,16 +60,6 @@
                                 @error('photos') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                         </div>
-
-                        <div class="mb-4">
-                            <label for="tagids" class="block text-gray-700 text-sm font-bold mb-2">Tags:</label>
-                            <select multiple name="tagids[]" id="tagids[]" wire:model="tagids"
-                                class="shadow appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
-                                @foreach ($tags as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                 </div>
 

@@ -16,11 +16,11 @@ class Task extends Model
         'task_type',
         'meta_data',
         'category_id',
-        'author_id',
+        'user_id',
     ];
 
-    public function author(){
-        return $this->belongsTo(User::class, 'author_id', 'id');
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function category(){
@@ -28,7 +28,7 @@ class Task extends Model
     }
 
     public function progress_lists(){
-        return $this->hasMany(Progress_list::class)->with(['author']);
+        return $this->hasMany(Progress_list::class)->with(['user']);
     }
 
     public function images(){
@@ -39,8 +39,5 @@ class Task extends Model
         return $this->hasMany(Video::class);
     }
 
-    public function tags(){
-        return $this->belongsToMany(Tag::class);
-    }
 
 }

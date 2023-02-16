@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Tasks;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Task;
-use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -19,7 +18,6 @@ class Tasks extends Component
     use WithFileUploads;
 
     public $title, $content, $category, $task_id;
-    public $tagids = array();
     public $photos = [];
     public $isOpen = 0;
 
@@ -28,7 +26,6 @@ class Tasks extends Component
         return view('livewire.tasks.tasks', [
             'tasks' => Task::orderBy('id', 'desc')->paginate(),
             'categories' => Category::all(),
-            'tags' => Tag::all(),
         ]);
     }
 
@@ -46,7 +43,7 @@ class Tasks extends Component
             'title' => $this->title,
             'content' => $this->content,
             'category_id' => intVal($this->category),
-            'author_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         // Image upload and store name in db
@@ -71,20 +68,6 @@ class Tasks extends Component
             }
         }
 
-        // Task Tag mapping
-        if (count($this->tagids) > 0) {
-            DB::table('task_tag')->where('task_id', $task->id)->delete();
-
-            foreach ($this->tagids as $tagid) {
-                DB::table('task_tag')->insert([
-                    'task_id' => $task->id,
-                    'tag_id' => intVal($tagid),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
-        }
-
         session()->flash(
             'message',
             $this->task_id ? 'Task Updated Successfully.' : 'Task Created Successfully.'
@@ -97,20 +80,18 @@ class Tasks extends Component
     public function delete($id)
     {
         Task::find($id)->delete();
-        DB::table('task_tag')->where('task_id', $id)->delete();
 
         session()->flash('message', 'Task Deleted Successfully.');
     }
 
     public function edit($id)
     {
-        $task = Task::with('tags')->findOrFail($id);
+        $task = Task::findOrFail($id);
 
         $this->task_id = $id;
         $this->title = $task->title;
         $this->content = $task->content;
         $this->category = $task->category_id;
-        $this->tagids = $task->tags->pluck('id');
 
         $this->openModal();
     }
@@ -136,7 +117,6 @@ class Tasks extends Component
         $this->title = null;
         $this->content = null;
         $this->category = null;
-        $this->tagids = null;
         $this->photos = null;
         $this->task_id = null;
     }

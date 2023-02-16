@@ -153,8 +153,8 @@ class UserApiController extends Controller
 
     public function tasks($id)
     {
-        $author = User::find($id);
-        $tasks = $author->tasks()->with('category', 'author', 'tags', 'images', 'videos', 'progress_lists')->paginate();
+        $user = User::find($id);
+        $tasks = $user->tasks()->with('category', 'user', 'images', 'videos', 'progress_lists')->paginate();
         return TaskResource::collection($tasks);
     }
 

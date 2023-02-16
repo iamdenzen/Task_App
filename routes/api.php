@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\CategoryApiController;
 use App\Http\Controllers\Api\Progress_listApiController;
 use App\Http\Controllers\Api\TaskApiController;
-use App\Http\Controllers\Api\TagApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +35,6 @@ Route::get('tasks', [TaskApiController::class, 'index']);
 Route::get('tasks/{id}', [TaskApiController::class, 'show']);
 Route::get('tasks/{id}/progress_lists', [TaskApiController::class, 'progress_lists']);
 
-Route::get('tags/{id}/tasks', [TagApiController::class, 'tasks']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('progress_lists/tasks', [Progress_listApiController::class, 'store']);

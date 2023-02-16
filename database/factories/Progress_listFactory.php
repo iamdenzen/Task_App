@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Comment;
+use App\Models\Progress_list;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommentFactory extends Factory
+class Progress_listFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Comment::class;
+    protected $model = Progress_list::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'comment' => $this->faker->sentence,
-            'author_id' => $this->faker->numberBetween(1, 100),
+            'remarks' => $this->faker->sentence,
+            'user_id' => $this->faker->numberBetween(1, 100),
             'task_id' => $this->faker->numberBetween(1, 1500),
         ];
     }

@@ -24,9 +24,8 @@ class TaskResource extends JsonResource
             'updated_at' => Carbon::parse($this->updated_at)->format('d/m/Y'),
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'videos' => VideoResource::collection($this->whenLoaded('videos')),
-            'tags' => TagResource::collection($this->whenLoaded('tags')),
             'progress_lists' => Progress_listResource::collection($this->whenLoaded('progress_lists')),
-            'author' => new UserResource($this->whenLoaded('author')),
+            'user' => new UserResource($this->whenLoaded('user')),
             'category' => new CategoryResource($this->whenLoaded('category')),
         ];
     }
