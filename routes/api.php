@@ -36,8 +36,8 @@ Route::get('tasks/{id}', [TaskApiController::class, 'show']);
 Route::get('tasks/{id}/progress_lists', [TaskApiController::class, 'progress_lists']);
 
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     Route::post('progress_lists/tasks', [Progress_listApiController::class, 'store']);
     Route::post('logout', [UserApiController::class, 'logout']);
     Route::post('update-password',[UserApiController::class, 'updatePassword']);
-});
+//});

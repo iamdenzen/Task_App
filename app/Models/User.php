@@ -39,8 +39,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function progress(){
+    public function progress_lists(){
         return $this->hasMany(Progress::class, 'user_id', 'id');
+    }
+
+    public function tasks(){
+        return $this->hasMany(Task::class, 'user_id', 'id');
     }
 
     /**

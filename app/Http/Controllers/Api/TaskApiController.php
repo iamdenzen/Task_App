@@ -12,14 +12,14 @@ class TaskApiController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with(['user', 'category', 'images', 'videos', 'progress_lists'])->paginate();
+        $tasks = Task::with(['user', 'images', 'progress_lists'])->paginate();
         return TaskResource::collection($tasks);
     }
 
     public function show($id)
     {
         $task = Task::with([
-            'user', 'category', 'images', 'videos', 'progress_lists' => function ($query) {
+            'user', 'images', 'progress_lists' => function ($query) {
                 $query->with(['user']);
             }
         ])->find($id);

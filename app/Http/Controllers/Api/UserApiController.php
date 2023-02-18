@@ -19,7 +19,7 @@ class UserApiController extends Controller
     {
         $response = [
           'status' => true,
-          'message' =>  'User registered successully',
+          'message' =>  'User retrieved successully',
           'data' => new UserResource(User::find($id))
         ];
 
@@ -50,9 +50,9 @@ class UserApiController extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        $token = $user->createToken('app-token')->plainTextToken;
+        //$token = $user->createToken('app-token')->plainTextToken;
 
-        $user->token = $token;
+        //$user->token = $token;
         $response = [
           'status' => true,
           'message' =>  'User registered successully',
@@ -136,6 +136,7 @@ class UserApiController extends Controller
     public function updatePassword(Request $request)
     {
         $rules = [
+            'email' => ['required|email'],
             'current_password' => ['required', 'min:6'],
             'password' => ['required', 'min:6'], //need to pass password_confirmation also in request
         ];
@@ -160,7 +161,7 @@ class UserApiController extends Controller
     public function tasks($id)
     {
         $user = User::find($id);
-        $tasks = $user->tasks()->with('category', 'user', 'images', 'videos', 'progress_lists')->paginate();
+        $tasks = $user->tasks()->with('user', 'images', 'progress_lists')->paginate();
         return TaskResource::collection($tasks);
     }
 

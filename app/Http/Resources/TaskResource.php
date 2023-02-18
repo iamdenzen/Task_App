@@ -23,10 +23,10 @@ class TaskResource extends JsonResource
             'task_meta' => $this->meta_data,
             'updated_at' => Carbon::parse($this->updated_at)->format('d/m/Y'),
             'images' => ImageResource::collection($this->whenLoaded('images')),
-            'videos' => VideoResource::collection($this->whenLoaded('videos')),
+            /*'videos' => VideoResource::collection($this->whenLoaded('videos')),*/
             'progress_lists' => Progress_listResource::collection($this->whenLoaded('progress_lists')),
             'user' => new UserResource($this->whenLoaded('user')),
-            'category' => new CategoryResource($this->whenLoaded('category')),
+            /*'category' => new CategoryResource($this->whenLoaded('category')),*/
         ];
     }
 }
